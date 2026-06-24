@@ -1432,6 +1432,28 @@ function reset(clearDisplay = true) {
   currentTirage = {};
 }
 </script>
+  <div id="installBanner" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#120f14; border-top:1px solid #c8a96e; padding:16px 24px; display:none; align-items:center; justify-content:space-between; z-index:9998; font-family:'Raleway',sans-serif;">
+  <span style="font-size:12px; color:#e8dcc8; letter-spacing:1px;">Installer l'Oracle sur votre téléphone</span>
+  <button onclick="installApp()" style="background:transparent; border:1px solid #c8a96e; color:#c8a96e; font-family:'Cormorant Garamond',serif; font-size:16px; font-style:italic; padding:8px 24px; cursor:pointer;">✦ Installer</button>
+</div>
+
+<script>
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.getElementById('installBanner').style.display = 'flex';
+});
+function installApp() {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(() => {
+      deferredPrompt = null;
+      document.getElementById('installBanner').style.display = 'none';
+    });
+  }
+}
+</script>
   <script>
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker.js');
