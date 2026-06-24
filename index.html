@@ -1465,5 +1465,26 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker.js');
 }
 </script>
+  <div id="popupInstall" style="position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.75); z-index:99999; display:flex; align-items:center; justify-content:center; padding:20px;">
+  <div style="background:#120f14; border:1px solid #c8a96e; padding:30px; max-width:400px; width:100%; text-align:center;">
+    <div style="font-size:10px; letter-spacing:4px; text-transform:uppercase; color:#7a6340; margin-bottom:16px;">Bibliothèque de Traversée</div>
+    <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:18px; color:#e8dcc8; line-height:1.8; margin-bottom:20px;">
+      Pour retrouver l'oracle facilement sur votre téléphone —<br><br>
+      <strong style="color:#c8a96e;">Android :</strong> menu ⋮ puis<br>"Ajouter à l'écran d'accueil"<br><br>
+      <strong style="color:#c8a96e;">iPhone :</strong> bouton Partager ↑ puis<br>"Sur l'écran d'accueil"
+    </p>
+    <button onclick="fermerPopup()" style="background:transparent; border:1px solid #c8a96e; color:#c8a96e; font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic; padding:12px 36px; cursor:pointer;">✦ Compris</button>
+  </div>
+</div>
+
+<script>
+function fermerPopup() {
+  document.getElementById('popupInstall').style.display = 'none';
+  localStorage.setItem('popupVu', 'oui');
+}
+if (localStorage.getItem('popupVu') === 'oui') {
+  document.getElementById('popupInstall').style.display = 'none';
+}
+</script>
 </body>
 </html>
