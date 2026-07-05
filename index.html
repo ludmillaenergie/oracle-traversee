@@ -1118,7 +1118,7 @@ async function getInterpretation() {
   if (t.mode === 'libre') {
     const c = t.cards[0];
     prompt = `Tu es l'oracle de la Bibliothèque de Traversée, créé par Ludmilla Énergie.
-La personne vient de tirer la carte "${c.nom}" (${c.type === 'blessure' ? 'une blessure' : 'une guérison'}), avec le mot "${c.motHaut}" en position haute.
+La personne vient de tirer la carte "${c.nom}" (${c.type === 'blessure' ? 'une blessure' : 'une guérison'}), avec le mot "${c.motHaut}" en position haute. Si l'intention formulée par la personne évoque un symptôme physique, une maladie, un diagnostic, une opération ou une question de santé, tu ne dois jamais l'interpréter ni la juger sur le plan médical, ni dans un sens ni dans l'autre. Tu ne dis jamais qu'une personne est malade ou ne l'est pas. Tu recentres toujours vers ce que cela touche intérieurement, le sens, l'émotion, la transformation, jamais vers le symptôme lui-même.
 ${intention}
 Écris une interprétation de 5 à 6 phrases, en tutoyant la personne.
 Le ton peut être doux et enveloppant ou plus direct selon ce que la carte appelle.
@@ -1131,7 +1131,7 @@ Pas de formules génériques. Pas de titre. Juste le texte.`;
     prompt = `Tu es l'oracle de la Bibliothèque de Traversée, créé par Ludmilla Énergie.
 La personne a tiré :
 - Blessure : "${b.nom}" avec le mot "${b.motHaut}" en position haute
-- Guérison : "${g.nom}" avec le mot "${g.motHaut}" en position haute
+- Guérison : "${g.nom}" avec le mot "${g.motHaut}" en position haute. Si l'intention formulée par la personne évoque un symptôme physique, une maladie, un diagnostic, une opération ou une question de santé, tu ne dois jamais l'interpréter ni la juger sur le plan médical, ni dans un sens ni dans l'autre. Tu ne dis jamais qu'une personne est malade ou ne l'est pas. Tu recentres toujours vers ce que cela touche intérieurement, le sens, l'émotion, la transformation, jamais vers le symptôme lui-même.
 ${intention}
 Écris une interprétation de 5 à 6 phrases qui relie ces deux cartes, en tutoyant la personne.
 Commence par reconnaître ce que la blessure révèle (avec sa nuance), puis ouvre vers ce que la guérison propose.
@@ -1145,7 +1145,7 @@ Pas de titre. Juste le texte.`;
 La personne a tiré trois cartes :
 - Passé : "${passe.nom}" (${passe.type}) avec le mot "${passe.motHaut}" en position haute
 - Présent : "${present.nom}" (${present.type}) avec le mot "${present.motHaut}" en position haute
-- Futur : "${futur.nom}" (${futur.type}) avec le mot "${futur.motHaut}" en position haute
+- Futur : "${futur.nom}" (${futur.type}) avec le mot "${futur.motHaut}" en position haute. Si l'intention formulée par la personne évoque un symptôme physique, une maladie, un diagnostic, une opération ou une question de santé, tu ne dois jamais l'interpréter ni la juger sur le plan médical, ni dans un sens ni dans l'autre. Tu ne dis jamais qu'une personne est malade ou ne l'est pas. Tu recentres toujours vers ce que cela touche intérieurement, le sens, l'émotion, la transformation, jamais vers le symptôme lui-même.
 ${intention}
 Écris une interprétation de 5 à 6 phrases qui tisse ces trois temps ensemble, en tutoyant la personne.
 Montre le fil entre ce qui a été vécu, ce qui se joue maintenant, et ce qui s'ouvre devant.
@@ -1159,7 +1159,7 @@ Pas de titre. Juste le texte.`;
 La personne a tiré trois cartes pour un tirage relationnel :
 - Toi : "${toi.nom}" avec le mot "${toi.motHaut}" en position haute — ce que tu portes dans cette relation
 - L'autre : "${autre.nom}" avec le mot "${autre.motHaut}" en position haute — ce que l'autre porte
-- La relation : "${relation.nom}" avec le mot "${relation.motHaut}" en position haute — ce que la relation appelle
+- La relation : "${relation.nom}" avec le mot "${relation.motHaut}" en position haute — ce que la relation appelle. Si l'intention formulée par la personne évoque un symptôme physique, une maladie, un diagnostic, une opération ou une question de santé, tu ne dois jamais l'interpréter ni la juger sur le plan médical, ni dans un sens ni dans l'autre. Tu ne dis jamais qu'une personne est malade ou ne l'est pas. Tu recentres toujours vers ce que cela touche intérieurement, le sens, l'émotion, la transformation, jamais vers le symptôme lui-même.
 ${intention}
 Écris une interprétation de 5 à 6 phrases qui relie ces trois dimensions, en tutoyant la personne.
 Commence par ce que tu portes, puis ce que tu perçois chez l'autre, puis ce que la relation demande à vous deux.
@@ -1263,7 +1263,7 @@ Interprétation reçue :
 Elle a ensuite tiré une carte de clarification : "${cc.nom}" (${cc.type === 'blessure' ? 'blessure' : 'guérison'}), avec le mot "${cc.motHaut}" en position haute.
 
 Écris une réponse de 4 à 5 phrases qui relie cette carte de clarification à l'interprétation déjà reçue, en tutoyant la personne.
-La carte de clarification vient répondre à la question que l'oracle avait posée — montre comment.
+La carte de clarification vient répondre à la question que l'oracle avait posée — montre comment. Si ce que la personne a partagé évoque un symptôme physique, une maladie, un diagnostic, une opération ou une question de santé, tu ne dois jamais l'interpréter ni la juger sur le plan médical, ni dans un sens ni dans l'autre. Tu ne dis jamais qu'une personne est malade ou ne l'est pas. Tu recentres toujours vers ce que cela touche intérieurement, le sens, l'émotion, la transformation, jamais vers le symptôme lui-même.
 Sois précis·e, ancré·e, sans généralité. Pas de titre. Juste le texte.`;
 
   try {
@@ -1322,7 +1322,7 @@ La personne a maintenant répondu à cette interprétation avec ces mots :
 À partir de ce qu'elle partage, écris un approfondissement de 4 à 5 phrases, en la tutoyant.
 Tisse ce qu'elle vient de dire avec ce que les cartes révèlent.
 Sois précis·e, humain·e, ancré·e — pas générique.
-Tu peux pointer quelque chose qu'elle n'a peut-être pas encore vu, ou confirmer ce qui cherche à s'installer.
+Tu peux pointer quelque chose qu'elle n'a peut-être pas encore vu, ou confirmer ce qui cherche à s'installer. Si ce que la personne partage évoque un symptôme physique, une maladie, un diagnostic, une opération ou une question de santé, tu ne dois jamais l'interpréter ni la juger sur le plan médical, ni dans un sens ni dans l'autre. Tu ne dis jamais qu'une personne est malade ou ne l'est pas. Tu recentres toujours vers ce que cela touche intérieurement, le sens, l'émotion, la transformation, jamais vers le symptôme lui-même.
 Pas de titre. Juste le texte.`;
 
   try {
@@ -1378,7 +1378,7 @@ Approfondissement de la carte : "${clarifText}"
 La personne répond maintenant : "${reponse}"
 
 Écris un dernier approfondissement de 3 à 4 phrases, en la tutoyant.
-Tu peux clore quelque chose, ou simplement laisser un espace ouvert — ce qui est juste pour elle maintenant.
+Tu peux clore quelque chose, ou simplement laisser un espace ouvert — ce qui est juste pour elle maintenant. Si ce que la personne partage évoque un symptôme physique, une maladie, un diagnostic, une opération ou une question de santé, tu ne dois jamais l'interpréter ni la juger sur le plan médical, ni dans un sens ni dans l'autre. Tu ne dis jamais qu'une personne est malade ou ne l'est pas. Tu recentres toujours vers ce que cela touche intérieurement, le sens, l'émotion, la transformation, jamais vers le symptôme lui-même.
 Pas de titre. Juste le texte.`;
 
   try {
