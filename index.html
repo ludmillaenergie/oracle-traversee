@@ -750,7 +750,7 @@ function checkPassword() {
   const input = document.getElementById('pwdInput').value.trim();
   if (input === ACCESS_PASSWORD) {
     document.getElementById('password-screen').style.display = 'none';
-    sessionStorage.setItem('oracle_access', 'granted');
+    localStorage.setItem('oracle_access', 'granted');
   } else {
     const err = document.getElementById('pwdError');
     err.textContent = 'Code incorrect. Vérifie ton email de confirmation.';
@@ -759,7 +759,7 @@ function checkPassword() {
     setTimeout(() => err.textContent = '', 3000);
   }
 }
-if (sessionStorage.getItem('oracle_access') === 'granted') {
+if (localStorage.getItem('oracle_access') === 'granted') {
   document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('password-screen').style.display = 'none';
   });
