@@ -746,24 +746,47 @@ footer {
 </div>
 
 <script>
-const ACCESS_PASSWORD = 'traversee2026';
-function checkPassword() {
-  const input = document.getElementById('pwdInput').value.trim();
-  if (input === ACCESS_PASSWORD) {
-    document.getElementById('password-screen').style.display = 'none';
-    localStorage.setItem('oracle_access', 'granted');
-  } else {
-    const err = document.getElementById('pwdError');
-    err.textContent = 'Code incorrect. Vérifie ton email de confirmation.';
-    document.getElementById('pwdInput').value = '';
-    document.getElementById('pwdInput').focus();
-    setTimeout(() => err.textContent = '', 3000);
-  }
-}
-if (localStorage.getItem('oracle_access') === 'granted') {
+const WORKER_URL = 'https://oracle-traversee.ludmillaenergie.workers.dev';
+
+// Au chargement : si ce code a déjà été validé sur cet appareil, on saute directement l'écran
+if (localStorage.getItem('traversee_code_valide')) {
   document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('password-screen').style.display = 'none';
   });
+}
+
+async function checkPassword() {
+  const input = document.getElementById('pwdInput');
+  const val = input.value.trim().toUpperCase();
+  const err = document.getElementById('pwdError');
+
+  if (!val) {
+    err.textContent = 'Merci d\'entrer ton code.';
+    return;
+  }
+
+  err.textContent = 'Vérification...';
+
+  try {
+    const reponse = await fetch(WORKER_URL + '/verify-code', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ code: val })
+    });
+    const data = await reponse.json();
+
+    if (data.valide) {
+      localStorage.setItem('traversee_code_valide', val);
+      document.getElementById('password-screen').style.display = 'none';
+      err.textContent = '';
+    } else {
+      err.textContent = 'Code incorrect. Vérifie ton email de confirmation.';
+      input.value = '';
+      input.focus();
+    }
+  } catch (e) {
+    err.textContent = 'Erreur de connexion, réessaie dans un instant.';
+  }
 }
 </script>
 
